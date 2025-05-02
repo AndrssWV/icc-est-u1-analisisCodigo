@@ -4,23 +4,24 @@ import time
 
 class Benchmarking:
     def __init__(self):
-        print('benchmarking instanciado')
-        self.mo = MetodosOrdenamiento()
-        arreglo = self.build_arreglo(10000)
-        #tarea = lambda: self.mo.sort_bubble(arreglo)
-        #milles = self.contar_con_current_time_milles(tarea)
-        #nano = self.contar_con_nano_time(tarea)
-        #print(f'Tiempo con milisegundo '+str(milles))
-        #print(f'Tiempo con nano '+str(nano))
-        b = lambda: self.mo.sort_bubble(arreglo)
-        bm = lambda: self.mo.sort_burbuja_mejorado_optimizado(arreglo)
-        s = lambda: self.mo.sort_seleccion(arreglo)
-        tb = self.contar_con_nano_time(b)
-        tbm = self.contar_con_nano_time(bm)
-        ts = self.contar_con_nano_time(s)
-        print(f'Tiempo con Burbuja '+str(tb))
-        print(f'Tiempo con Burbuja Mejorado '+str(tbm))
-        print(f'Tiempo con Seleccion '+str(ts))
+        pass
+        #print('benchmarking instanciado')
+        #self.mo = MetodosOrdenamiento()
+        #arreglo = self.build_arreglo(10000)
+        ##tarea = lambda: self.mo.sort_bubble(arreglo)
+        ##milles = self.contar_con_current_time_milles(tarea)
+        ##nano = self.contar_con_nano_time(tarea)
+        ##print(f'Tiempo con milisegundo '+str(milles))
+        ##print(f'Tiempo con nano '+str(nano))
+        #b = lambda: self.mo.sort_bubble(arreglo)
+        #bm = lambda: self.mo.sort_burbuja_mejorado_optimizado(arreglo)
+        #s = lambda: self.mo.sort_seleccion(arreglo)
+        #tb = self.contar_con_nano_time(b)
+        #tbm = self.contar_con_nano_time(bm)
+        #ts = self.contar_con_nano_time(s)
+        #print(f'Tiempo con Burbuja '+str(tb))
+        #print(f'Tiempo con Burbuja Mejorado '+str(tbm))
+        #print(f'Tiempo con Seleccion '+str(ts))
 
     def build_arreglo(self, tamano):
         arreglo = []
@@ -38,3 +39,8 @@ class Benchmarking:
         inicio = time.time_ns()
         tarea()
         return (time.time_ns() - inicio) / 1000000000.0
+    
+    def medir_tiempo(self, funcion, arreglo):
+        inicio = time.perf_counter()
+        funcion(arreglo)
+        return time.perf_counter() - inicio
